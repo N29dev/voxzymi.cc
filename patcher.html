@@ -232,7 +232,7 @@
                         if (tkhd !== -1 && tkhd < end) {
                             if (data[tkhd + 4] === 0) {
                                 view.setUint32(tkhd + 48, 1, false);
-                                log(`Patched video tkhd box successfully at offset ${tkhd}.`);
+                                log(`Patched video successfully at offset ${tkhd}.`);
                                 isPatched = true;
                             }
                         }
@@ -253,7 +253,7 @@
             a.href = url;
             a.download = `patched_${file.name}`;
             a.click();
-            log(`Success! Patched file saved as: patched_${file.name}`);
+            log(`Success! Patched file saved as: patched_${file.name} - Credits to the developer of TikQuick (Mikedev) for the original patching method.`);
 
 
             function findBox(data, boxType, start = 0) {
@@ -274,7 +274,6 @@
 
     </script>
     <script src="background.js"></script>
-    <script src="animations.js"></script>
 
 </body>
 
