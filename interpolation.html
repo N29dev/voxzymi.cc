@@ -314,9 +314,8 @@
     const supportsWebCodecs = typeof VideoEncoder !== 'undefined' &&
       typeof AudioEncoder !== 'undefined' &&
       typeof VideoFrame !== 'undefined' &&
-      typeof WebMMuxer !== 'undefined';
+      typeof WebMuxer !== 'undefined';
 
-    // --- WORKER DEFINITION (Inline with a Blob) ---
     const workerCode = `
       function createGrayscale(imageData) {
         const data = imageData.data;
@@ -651,7 +650,7 @@
 
       const hasAudio = decodedAudioBuffer !== null;
       const muxerOptions = {
-        target: new WebMMuxer.ArrayBufferTarget(),
+        target: new WebMuxer.ArrayBufferTarget(),
         video: {
           codec: 'V_VP9',
           width: W,
@@ -669,7 +668,7 @@
         };
       }
 
-      const muxer = new WebMMuxer.Muxer(muxerOptions);
+      const muxer = new WebMuxer.Muxer(muxerOptions);
       const audioPromise = hasAudio ? encodeAudioBuffer(decodedAudioBuffer, muxer) : Promise.resolve();
 
       const encoder = new VideoEncoder({
@@ -694,7 +693,6 @@
         searchRadius: 8
       };
 
-      // 1. Fetch very first frame
       hiddenVideo.currentTime = 0;
       try { await once(hiddenVideo, 'seeked'); } catch { setStatus('Failed to read first frame'); resetUI(); return; }
       capCtx.drawImage(hiddenVideo, 0, 0, W, H);
@@ -702,7 +700,6 @@
 
       let drawnFrames = 0;
 
-      // 2. Loop continuously, shifting prev -> current and clearing memory
       for (let i = 1; i <= totalSrc; i++) {
         if (cancelled) break;
 
@@ -713,16 +710,13 @@
         capCtx.drawImage(hiddenVideo, 0, 0, W, H);
         let currentBitmap = await createImageBitmap(capCanvas);
 
-        // Make bitmap copies for worker transfer
         const prevWorkerBmp = await createImageBitmap(prevBitmap);
         const currentWorkerBmp = await createImageBitmap(currentBitmap);
 
         setStatus(`Processing segment ${i}/${totalSrc}`);
 
-        // Interpolate steps in worker thread
         const interpolatedBitmaps = await processInWorker(prevWorkerBmp, currentWorkerBmp, W, H, extra, flowOptions);
 
-        // Encode results sequentially
         for (let step = 0; step < interpolatedBitmaps.length; step++) {
           if (cancelled) break;
 
@@ -732,7 +726,7 @@
           const timestamp = drawnFrames * 1000000 / outFps;
           const frame = new VideoFrame(workCanvas, { timestamp });
           encoder.encode(frame, { keyFrame: drawnFrames === 0 });
-          frame.close(); // Immediate memory collection
+          frame.close();
           bmp.close();
 
           drawnFrames++;
@@ -744,8 +738,8 @@
           );
         }
 
-        prevBitmap.close(); // Drop frame A out of memory
-        prevBitmap = currentBitmap; // Move frame B to frame A
+        prevBitmap.close();
+        prevBitmap = currentBitmap;
       }
 
       if (prevBitmap) prevBitmap.close();

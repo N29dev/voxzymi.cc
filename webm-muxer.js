@@ -1,5 +1,5 @@
 "use strict";
-var WebMMuxer = (() => {
+var Web uxer = (() => {
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -16,7 +16,7 @@ var WebMMuxer = (() => {
     }
     return to;
   };
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCo onJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
   var __accessCheck = (obj, member, msg) => {
     if (!member.has(obj))
       throw TypeError("Cannot " + msg);
@@ -1470,6 +1470,6 @@ ${notes}`;
     let milliseconds = timestamp % 1e3;
     return hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "." + milliseconds.toString().padStart(3, "0");
   };
-  return __toCommonJS(src_exports);
+  return __toCo onJS(src_exports);
 })();
-if (typeof module === "object" && typeof module.exports === "object") Object.assign(module.exports, WebMMuxer)
+if (typeof module === "object" && typeof module.exports === "object") Object.assign(module.exports, Web uxer)
