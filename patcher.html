@@ -1,128 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>voxzymi</title>
     <link rel="stylesheet" href="animations.css">
     <style>
-        body {
-            font-family: Inter, system-ui, sans-serif;
-            line-height: 1.5;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #010409;
-            color: #ffffff;
-        }
-
-        .home-nav {
-            display: flex;
-            justify-content: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .home-link {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 14px;
-            border-radius: 12px;
-            background: #0d1117;
-            border: 1px solid #ffffff;
-            color: #ffffff;
-            text-decoration: none;
-            transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .home-link:hover {
-            background: #161b22;
-            transform: translateY(-1px);
-            border-color: #ffffff;
-        }
-
-        .home-link img {
-            width: 32px;
-            height: auto;
-            filter: invert(1);
-        }
-
-        .container {
-            background: #0d1117;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #c9d1d9;
-        }
-
-        input[type="file"],
-        input[type="number"] {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 10px;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            box-sizing: border-box;
-            background: #0b1117;
-            color: #ffffff;
-        }
-
-        button {
-            background: #ffffff;
-            color: #010409;
-            border: none;
-            padding: 15px 18px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 700;
-            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        button:hover:not(:disabled) {
-            background: #f7f7f7;
-            transform: translateY(-1px);
-            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.18);
-        }
-
-        button:disabled {
-            background: #21262d;
-            color: #8b949e;
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-        }
-
-        button.danger {
-            background: #ff4e4e;
-            color: #ffffff;
-        }
-
-        button.danger:hover:not(:disabled) {
-            background: #ff6666;
-        }
-
-        #log {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            font-family: monospace;
-            border-radius: 12px;
-            white-space: pre-wrap;
-            display: none;
-        }
-
+        body { font-family: Inter, system-ui, sans-serif; line-height: 1.5; max-width: 900px; margin: 40px auto; padding: 20px; background: #010409; color: #ffffff; }
+        .home-nav { display: flex; justify-content: flex-start; margin-bottom: 20px; }
+        .home-link { display: inline-flex; align-items: center; padding: 10px 14px; border-radius: 12px; background: #0d1117; border: 1px solid #ffffff; color: #ffffff; text-decoration: none; transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease; }
+        .home-link:hover { background: #161b22; transform: translateY(-1px); border-color: #ffffff; }
+        .home-link img { width: 32px; height: auto; filter: invert(1); }
+        .container { background: #0d1117; padding: 30px; border-radius: 16px; box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18); }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 700; margin-bottom: 10px; color: #c9d1d9; }
+        input[type="file"], input[type="number"] { width: 100%; padding: 14px; margin-bottom: 10px; border: 1px solid #30363d; border-radius: 12px; box-sizing: border-box; background: #0b1117; color: #ffffff; }
+        button { background: #ffffff; color: #010409; border: none; padding: 15px 18px; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 700; transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; }
+        button:hover:not(:disabled) { background: #f7f7f7; transform: translateY(-1px); box-shadow: 0 12px 24px rgba(255, 255, 255, 0.18); }
+        button:disabled { background: #21262d; color: #8b949e; cursor: not-allowed; box-shadow: none; transform: none; }
+        button.danger { background: #ff4e4e; color: #ffffff; }
+        button.danger:hover:not(:disabled) { background: #ff6666; }
+        #log { margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); color: #ffffff; font-family: monospace; border-radius: 12px; white-space: pre-wrap; display: none; }
         .background-canvas {
             position: fixed;
             inset: 0;
@@ -137,144 +35,142 @@
         }
     </style>
 </head>
-
 <body>
-    <canvas id="backgroundCanvas" class="background-canvas"></canvas>
-    <div class="container">
-        <div class="home-nav">
-            <a href="index.html" class="home-link">
-                <img src="logo/home.png" alt="Home">
-            </a>
-        </div>
-        <h2>MP4 Patcher</h2>
-        <p></p>
+<canvas id="backgroundCanvas" class="background-canvas"></canvas>
+<div class="container">
+<div class="home-nav">
+    <a href="index.html" class="home-link">
+        <img src="logo/home.png" alt="Home">
+    </a>
+</div>
+    <h2>MP4 Patcher</h2>
+    <p></p>
 
-        <div class="input-group">
-            <label>Select MP4 File:</label>
-            <input type="file" id="videoFile" accept="video/mp4">
-        </div>
-
-
-
-        <button onclick="processVideo()">Patch Video</button>
-
-        <div id="log"></div>
+    <div class="input-group">
+        <label>Select MP4 File:</label>
+        <input type="file" id="videoFile" accept="video/mp4">
     </div>
 
-    <script>
-        const logEl = document.getElementById('log');
-        function log(msg) {
-            logEl.style.display = 'block';
-            logEl.textContent += msg + '\n';
+    <div class="input-group">
+        <label>Scale Factor </label>
+        <input type="number" id="scaleFactor" step="0.1" placeholder="Leave blank for auto-adjustment">
+    </div>
+
+    <button onclick="processVideo()">Patch Video</button>
+
+    <div id="log"></div>
+</div>
+
+<script>
+    const logEl = document.getElementById('log');
+    function log(msg) {
+        logEl.style.display = 'block';
+        logEl.textContent += msg + '\n';
+    }
+
+    // Animate log when it appears
+    const observer = new MutationObserver(() => {
+        if (logEl.style.display === 'block' && !logEl.classList.contains(' ')) {
+            logEl.classList.add(' ');
+        }
+    });
+    observer.observe(logEl, { attributes: true });
+
+    async function processVideo() {
+        const fileInput = document.getElementById('videoFile');
+        const scaleInput = document.getElementById('scaleFactor');
+        
+        if (!fileInput.files[0]) return alert("Please select a file first.");
+        
+        const file = fileInput.files[0];
+
+        if (!file.type.includes('video')) {
+            alert("Error: Selected file is not a video.");
+            return;
         }
 
-        const observer = new MutationObserver(() => {
-            if (logEl.style.display === 'block' && !logEl.classList.contains(' ')) {
-                logEl.classList.add(' ');
-            }
-        });
-        observer.observe(logEl, { attributes: true });
+        logEl.textContent = "Starting process...\n";
+        const arrayBuffer = await file.arrayBuffer();
+        const data = new Uint8Array(arrayBuffer);
+        const view = new DataView(arrayBuffer);
 
-        async function processVideo() {
-            const fileInput = document.getElementById('videoFile');
-
-            if (!fileInput.files[0]) return alert("Please select a file first.");
-
-            const file = fileInput.files[0];
-
-            if (!file.type.includes('video')) {
-                alert("Error: Selected file is not a video.");
-                return;
-            }
-
-            logEl.textContent = "Starting process...\n";
-            const arrayBuffer = await file.arrayBuffer();
-            const data = new Uint8Array(arrayBuffer);
-            const view = new DataView(arrayBuffer);
-
-            const signature = String.fromCharCode(data[4], data[5], data[6], data[7]);
-            if (signature !== "ftyp") {
-                alert("Error: Invalid MP4 container.");
-                return;
-            }
-
-            const MOOV = [0x6d, 0x6f, 0x6f, 0x76]; // 'moov'
-            const TRAK = [0x74, 0x72, 0x61, 0x6b]; // 'trak'
-            const HDLR = [0x68, 0x64, 0x6c, 0x72]; // 'hdlr'
-            const VIDE = [0x76, 0x69, 0x64, 0x65]; // 'vide'
-            const TKHD = [0x74, 0x6b, 0x68, 0x64]; // 'tkhd'
-
-            const moov = findBox(data, MOOV);
-            if (moov === -1) {
-                alert("Error: No moov box found, probably an invalid MP4.");
-                return;
-            }
-
-            let pos = moov;
-            let isPatched = false;
-
-            while (true) {
-                const trak = findBox(data, TRAK, pos);
-                if (trak === -1) break;
-
-                const next_trak = findBox(data, TRAK, trak + 4);
-                const end = next_trak !== -1 ? next_trak : data.length;
-
-                const hdlr = findBox(data, HDLR, trak);
-                if (hdlr !== -1 && hdlr < end) {
-                    if (
-                        data[hdlr + 12] === VIDE[0] &&
-                        data[hdlr + 13] === VIDE[1] &&
-                        data[hdlr + 14] === VIDE[2] &&
-                        data[hdlr + 15] === VIDE[3]
-                    ) {
-                        const tkhd = findBox(data, TKHD, trak);
-                        if (tkhd !== -1 && tkhd < end) {
-                            if (data[tkhd + 4] === 0) {
-                                view.setUint32(tkhd + 48, 1, false);
-                                log(`Patched video successfully at offset ${tkhd}.`);
-                                isPatched = true;
-                            }
-                        }
-                        break;
-                    }
-                }
-                pos = trak + 4;
-            }
-
-            if (!isPatched) {
-                log("\nWarning: Could not patch. Container layout might be unsupported.");
-            }
-
-
-            const blob = new Blob([arrayBuffer], { type: file.type });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `patched_${file.name}`;
-            a.click();
-            log(`Success! Patched file saved as: patched_${file.name} - Credits to the developer of TikQuick (Mikedev) for the original patching method.`);
-
-
-            function findBox(data, boxType, start = 0) {
-                for (let i = start; i <= data.length - 4; i++) {
-                    if (
-                        data[i] === boxType[0] &&
-                        data[i + 1] === boxType[1] &&
-                        data[i + 2] === boxType[2] &&
-                        data[i + 3] === boxType[3]
-                    ) {
-                        return i;
-                    }
-                }
-                return -1;
-            }
+        const signature = String.fromCharCode(data[4], data[5], data[6], data[7]);
+        if (signature !== "ftyp") {
+            alert("Error: Invalid MP4 container.");
+            return;
         }
 
+        let totalPatched = 0;
+        const scaleFactor = parseFloat(scaleInput.value) || null;
 
-    </script>
-    <script src="background.js"></script>
+        totalPatched += patchAtom(view, data, "mvhd", scaleFactor);
+        totalPatched += patchAtom(view, data, "mdhd", scaleFactor);
+
+        log(`\nTotal patched atoms: ${totalPatched}`);
+
+        const blob = new Blob([arrayBuffer], { type: file.type });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `patched_${file.name}`;
+        a.click();
+        log(`Success! Patched file saved as: patched_${file.name}`);
+    }
+
+    function patchAtom(view, data, atomName, scaleFactor) {
+        let count = 0;
+        const atomBytes = new TextEncoder().encode(atomName);
+
+        for (let i = 0; i < data.length - 8; i++) {
+            if (data[i] === atomBytes[0] && data[i+1] === atomBytes[1] && 
+                data[i+2] === atomBytes[2] && data[i+3] === atomBytes[3]) {
+                
+                const headerOffset = i - 4;
+                if (headerOffset < 0) continue;
+
+                const boxSize = view.getUint32(headerOffset, false);
+                if (boxSize < 8) continue;
+
+                const version = view.getUint8(headerOffset + 8);
+                let timescaleOffset, durationOffset, is64Bit = false;
+
+                if (version === 0) {
+                    timescaleOffset = headerOffset + 20;
+                    durationOffset = headerOffset + 24;
+                } 
+                else if (version === 1) {
+                    timescaleOffset = headerOffset + 28;
+                    durationOffset = headerOffset + 32;
+                    is64Bit = true;
+                } else {
+                    continue;
+                }
+
+                const oldTimescale = view.getUint32(timescaleOffset, false);
+                const chosenScale = scaleFactor !== null ? scaleFactor : 0.5;
+                
+                const newTimescale = Math.floor(oldTimescale * chosenScale);
+                view.setUint32(timescaleOffset, newTimescale, false);
+
+                if (is64Bit) {
+                    const oldDuration = view.getBigUint64(durationOffset, false);
+                    const newDuration = BigInt(Math.floor(Number(oldDuration) * chosenScale));
+                    view.setBigUint64(durationOffset, newDuration, false);
+                } else {
+                    const oldDuration = view.getUint32(durationOffset, false);
+                    const newDuration = Math.floor(oldDuration * chosenScale);
+                    view.setUint32(durationOffset, newDuration, false);
+                }
+
+                log(`Patched ${atomName} at ${headerOffset}: timescale x${chosenScale.toFixed(2)}`);
+                count++;
+            }
+        }
+        return count;
+    }
+</script>
+<script src="background.js"></script>
+<script src="animations.js"></script>
 
 </body>
-
 </html>
