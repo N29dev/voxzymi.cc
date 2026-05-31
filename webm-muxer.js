@@ -1,5 +1,5 @@
 "use strict";
-var Web uxer = (() => {
+var WebMuxer = (() => {
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -16,7 +16,7 @@ var Web uxer = (() => {
     }
     return to;
   };
-  var __toCo onJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
   var __accessCheck = (obj, member, msg) => {
     if (!member.has(obj))
       throw TypeError("Cannot " + msg);
