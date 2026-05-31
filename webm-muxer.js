@@ -1470,6 +1470,6 @@ ${notes}`;
     let milliseconds = timestamp % 1e3;
     return hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "." + milliseconds.toString().padStart(3, "0");
   };
-  return __toCo onJS(src_exports);
+  return __toCommonJS(src_exports);
 })();
-if (typeof module === "object" && typeof module.exports === "object") Object.assign(module.exports, Web uxer)
+if (typeof module === "object" && typeof module.exports === "object") Object.assign(module.exports, WebMuxer)
